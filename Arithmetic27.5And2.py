@@ -1,0 +1,13 @@
+addition = (27.5 + 2)
+subtraction = (27.5 - 2)
+multiplication = (27.5 * 2)
+division = (27.5 / 2)
+floordivision = (27.5 // 2)
+exponentiation = (27.5 ** 2)
+
+print("The sum of 27.5 and 2 is", addition)
+print("The difference between 27.5 and 2 is", subtraction)
+print("The product of 27.5 and 2 is", multiplication)
+print("The quotient of 27.5 divided by 2 is", division)
+print("The result of floor division between 27.5 and 2", floordivision)
+print("The square of 27.5 is" ,exponentiation)
