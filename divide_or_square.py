@@ -3,9 +3,3 @@ def divide_or_square(number):
 		return(number ** 0.5)
 	else:
 		return(number % 5) 
-
-
-
-print(divide_or_square(125))
-
-print(divide_or_square(21))
