@@ -15,7 +15,6 @@ def display_menu():
 def add_contact_to_phonebook(name, address, phone_number, email):
     contact = {"name": name, "address": address, "number": phone_number, "email": email}
     phonebook.append(contact)
-    print()
     return phonebook
 
 
@@ -23,24 +22,9 @@ def delete_contact_in_phonebook(name):
     for index in range(len(phonebook)):
         if name.casefold() in phonebook[index].values():
             del phonebook[index]
-            print(f"{name} has been deleted from your contacts")
-            break
+            return f"{name} has been deleted from your contacts"
     else:
-        print(f"{name} is not listed in your contacts")
-    print()
-    return phonebook
-
-
-def search_for_contact_in_phonebook(name):
-    for index in range(len(phonebook)):
-        if name.casefold() in phonebook[index].values():
-            for key, value in phonebook[index].items():
-                print(key, ": ", value)
-            break
-    else:
-        print(f"{name} is not listed in your contact")
-    print()
-    return phonebook
+        return f"{name} is not listed in your contacts"
 
 
 def edit_contact_in_phonebook(name):
@@ -50,11 +34,19 @@ def edit_contact_in_phonebook(name):
             phonebook[index]["address"] = input("Enter a new address: ")
             phonebook[index]["number"] = input("Enter a new number: ")
             phonebook[index]["email"] = input("Enter a new email: ")
-            break
+            return f"Contact list has successfully updated"
     else:
-        print(f"{name} is not listed in your contact")
-    print()
-    return phonebook
+        return f"{name} is not listed in your contacts"
+
+
+def search_for_contact_in_phonebook(name):
+    for index in range(len(phonebook)):
+        if name.casefold() in phonebook[index].values():
+            for key, value in phonebook[index].items():
+                print(key, ": ", value)
+            return f"{name} contact information"
+    else:
+        return f"{name} is not listed in your contacts"
 
 
 def view_contact_in_phonebook():
@@ -62,7 +54,6 @@ def view_contact_in_phonebook():
         for key, value in contact.items():
             print(key, ": ", value)
         print()
-    print()
     return phonebook
 
 
@@ -88,13 +79,15 @@ def phonebook_app():
             phone_number = input("Enter phone-number: ")
             email = input("Enter email: ")
             add_contact_to_phonebook(name.casefold(), address, phone_number, email)
+            print()
             return_or_exit_menu()
 
         case "2":
             if len(phonebook) > 0:
                 print("Delete a contact from your phonebook")
                 name = input("Enter a name: ")
-                delete_contact_in_phonebook(name)
+                print(delete_contact_in_phonebook(name))
+                print()
             else:
                 print("No saved contacts")
                 print()
@@ -104,7 +97,8 @@ def phonebook_app():
             if len(phonebook) > 0:
                 print("Edit a contact in your phonebook")
                 name = input("Enter a name: ")
-                edit_contact_in_phonebook(name)
+                print(edit_contact_in_phonebook(name))
+                print()
             else:
                 print("No saved contacts")
                 print()
@@ -114,7 +108,8 @@ def phonebook_app():
             if len(phonebook) > 0:
                 print("Search for contact in your phonebook")
                 name = input("Enter a name: ")
-                search_for_contact_in_phonebook(name)
+                print(search_for_contact_in_phonebook(name))
+                print()
             else:
                 print("No saved contacts")
                 print()
@@ -131,6 +126,3 @@ def phonebook_app():
 
 
 #phonebook_app()
-
-
-
